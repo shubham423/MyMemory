@@ -26,10 +26,7 @@ class MemoryGame(private val boardSize: BoardSize, customImages: List<String>?) 
         numCardFlips++
         val card = cards[position]
         var foundMatch = false
-        // Three cases
-        // 0 cards previously flipped over => restore cards + flip over the selected card
-        // 1 card previously flipped over => flip over the selected card + check if the images match
-        // 2 cards previously flipped over => restore cards + flip over the selected card
+
         if (indexOfSingleSelectedCard == null) {
             // 0 or 2 selected cards previously
             restoreCards()

@@ -16,5 +16,20 @@ val DEFAULT_ICONS = listOf(
         R.drawable.ic_school,
         R.drawable.ic_send,
         R.drawable.ic_star,
-        R.drawable.ic_work
+        R.drawable.ic_work,
+        R.drawable.ic_car,
+        R.drawable.ic_sick,
+        R.drawable.ic_subway,
+        R.drawable.ic_toys,
+        R.drawable.ic_football,
+        R.drawable.ic_cloudy,
+        R.drawable.ic_security,
+        R.drawable.ic_bluetooth,
+        R.drawable.ic_phone,
+        R.drawable.ic_toys,
+        R.drawable.ic_voice,
+        R.drawable.ic_remote,
+        R.drawable.ic_rowing
+
+
 )

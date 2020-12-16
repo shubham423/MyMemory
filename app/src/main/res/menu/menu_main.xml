@@ -18,4 +18,9 @@
         android:id="@+id/mi_download"
         android:title="Download custom game"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/Logout"
+        android:title="Logout"
+        app:showAsAction="never" />
 </menu>

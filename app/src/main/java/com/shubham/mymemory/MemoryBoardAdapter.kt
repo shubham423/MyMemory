@@ -65,7 +65,7 @@ class MemoryBoardAdapter(private val context: Context,
                     imageButton.setImageResource(memoryCard.identifier)
                 }
             } else {
-                imageButton.setImageResource(R.drawable.download)
+                imageButton.setImageResource(R.drawable.bluebac)
             }
 
             imageButton.setOnClickListener {

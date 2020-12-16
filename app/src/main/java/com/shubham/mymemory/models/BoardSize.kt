@@ -4,7 +4,8 @@ package com.shubham.mymemory.models
 enum class BoardSize(val numCards: Int) {
     EASY(8),
     MEDIUM(18),
-    HARD(24);
+    HARD(24),
+    EXTREMELY_HARD(48);
 
     companion object {
         fun getByValue(value: Int) = values().first { it.numCards == value }
@@ -15,6 +16,7 @@ enum class BoardSize(val numCards: Int) {
             EASY -> 2
             MEDIUM ->3
             HARD -> 4
+            EXTREMELY_HARD->6
         }
     }
 

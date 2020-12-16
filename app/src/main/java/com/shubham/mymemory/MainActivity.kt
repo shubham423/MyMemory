@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.jinatonic.confetti.CommonConfetti
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.shubham.mymemory.models.BoardSize
@@ -91,8 +92,18 @@ class MainActivity : AppCompatActivity() {
                 showDownloadDialog()
                 return true
             }
+            R.id.Logout->{
+                logout()
+            }
+
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun logout() {
+        FirebaseAuth.getInstance().signOut()
+        startActivity(Intent(this,SignInActivity::class.java))
+        finish()
     }
 
 
@@ -112,7 +123,8 @@ class MainActivity : AppCompatActivity() {
             val desiredBoardSize = when (radioGroupSize.checkedRadioButtonId) {
                 R.id.rbEasy -> BoardSize.EASY
                 R.id.rbMedium -> BoardSize.MEDIUM
-                else -> BoardSize.HARD
+                R.id.rbHard->BoardSize.HARD
+                else -> BoardSize.EXTREMELY_HARD
             }
             val intent = Intent(this, CreateActivity::class.java)
             intent.putExtra(EXTRA_BOARD_SIZE, desiredBoardSize)
@@ -126,11 +138,13 @@ class MainActivity : AppCompatActivity() {
             BoardSize.EASY -> radioGroupSize.check(R.id.rbEasy)
             BoardSize.MEDIUM -> radioGroupSize.check(R.id.rbMedium)
             BoardSize.HARD -> radioGroupSize.check(R.id.rbHard)
+            BoardSize.EXTREMELY_HARD->radioGroupSize.check(R.id.rbEHard)
         }
         showAlertDialog("Choose new size", boardSizeView, View.OnClickListener {
             boardSize = when (radioGroupSize.checkedRadioButtonId) {
                 R.id.rbEasy -> BoardSize.EASY
                 R.id.rbMedium -> BoardSize.MEDIUM
+                R.id.rbEHard->BoardSize.EXTREMELY_HARD
                 else -> BoardSize.HARD
             }
             gameName = null
@@ -167,8 +181,12 @@ class MainActivity : AppCompatActivity() {
                 tvNumPairs.text = "Pairs: 0/9"
             }
             BoardSize.HARD -> {
-                tvNumMoves.text = "Hard: 6 x 4"
+                tvNumMoves.text = "Hard: 4 x 6"
                 tvNumPairs.text = "Pairs: 0/12"
+            }
+            BoardSize.EXTREMELY_HARD -> {
+                tvNumMoves.text = "Hard: 6 x 6"
+                tvNumPairs.text = "Pairs: 0/18"
             }
         }
 
